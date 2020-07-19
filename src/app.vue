@@ -21,8 +21,11 @@
 				<span class="mui-tab-label">搜索</span>
 			</router-link>
 		</nav>
-     <router-link to="#">11221</router-link>
-     <router-view></router-view>
+     <!-- <router-link to="#">11221</router-link> -->
+	 <!--添加动画  -->
+   	<transition>
+			<router-view></router-view>
+		</transition>
  </div>
 </template>
 <script >
@@ -37,8 +40,27 @@ export default {
 </script>
 <style scoped>
     .wrapper{
-        padding-top: 40px;
-    }
+		padding-top: 40px;
+		  overflow-x: hidden;
+		  /* /问题解决横向滚动条 */
+	}
+	/* 进入式的动画 */
+	/* .v-enter {
+		opacity: 0;
+		transform: translateX(100%);
+	} */
+	/*离开
+	*/
+	.v-enter,.v-leave-to {
+		opacity: 0;
+		transform: translateX(100%);
+		position: absolute; 
+		/* 解决进入前后卡位置问题 */
+	}
+	.v-enter-active,
+	.v-leave-active {
+	transition: all 0.5s ease;
+	}
 </style>
 
 
